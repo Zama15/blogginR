@@ -1,0 +1,68 @@
+.sign {
+  @extend %img-background;
+
+  &-in {
+    background-image: url('../img_backgrounds/signin.jpg');
+  }
+
+  &-up {
+    background-image: url('../img_backgrounds/signup.jpg');
+  }
+}
+
+.log-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.log-form {
+  @include padding('na', 'lg');
+
+  div {
+    @extend %reset-element;
+  }
+
+  &-input {
+    @include margin('md');
+    position: relative;
+
+    input + span::after{
+      @include standard-color-bg('black');
+      bottom: sizes('sm');
+      content: '';
+      float: right;
+      height: 2px;
+      position: absolute;
+      transform: scaleX(0);
+      transition: $transition;
+      width: 100%;
+    }
+
+    input:focus + span::after, input:hover + span::after {
+      transform: scaleX(1);
+    }
+  }
+
+  .btn-submit {
+    @include padding('sm', 'md');
+    @include margin('lg', 'na', 'na');
+  }
+}
+
+.log-form .container-w-note {
+  p {
+    @include font-size('sm');
+    @include padding('na', 'sm', 'md', 'na');
+    font-weight: $font-weight-regular;
+  }
+
+  a {
+    @include font-size('sm');
+    @include padding('na', 'xs');
+  }
+
+  &:hover button{
+    @include standard-color('white');
+  }
+}

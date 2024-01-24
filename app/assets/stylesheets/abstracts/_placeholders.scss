@@ -1,0 +1,74 @@
+%reset-element {
+  background: transparent;
+  border: 0;
+  border: none;
+  cursor: inherit;
+  font: inherit;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  text-decoration: none;
+  vertical-align: baseline;
+
+  &:focus {
+    background: transparent;
+    border: none;
+    color: inherit;
+    outline: none;
+  }
+
+  &:hover {
+    background: transparent;
+    border: none;
+    color: inherit;
+    outline: none;
+  }
+
+  &:active {
+    background: transparent;
+    border: none;
+    color: inherit;
+    outline: none;
+  }
+
+  &:visited {
+    background: transparent;
+    border: none;
+    color: inherit;
+    outline: none;
+  }
+
+  &:focus-within {
+    background: transparent;
+    border: none;
+    color: inherit;
+    outline: none;
+  }
+}
+
+%flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+%flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+%img-responsive {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+%img-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+%pointer {
+  user-select: none;
+  cursor: pointer;
+}

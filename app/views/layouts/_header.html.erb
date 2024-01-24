@@ -1,0 +1,29 @@
+<header>
+  <div>
+    <%= link_to 'unforgettable', root_path %>
+  </div>
+  <div>
+    <ul>
+      <li><a href="views/extras/about.php">About us</a></li>
+      <li><a href="views/extras/services.php">Services</a></li>
+      <li><a href="views/extras/contact.php">Contact</a></li>
+    </ul>
+    <div class="logged">
+      <% if @current_user %>
+          <div class="dropdown">
+            <%= avatar_nil?(@current_user.avatar, { color: @current_user.preferences }) %>
+            <ul class="flex-col">
+              <li>
+                <a href="">Profile</a>
+              </li>
+              <li class="hover-danger-bg">
+                <%= link_to 'Logout', logout_path, data: { 'turbo-method' => :delete }%>
+              </li>
+            </ul>
+          </div>
+      <% else %>
+        <%= link_to 'Login', login_path %>
+      <% end %>
+    </div>
+  </div>
+</header>

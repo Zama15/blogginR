@@ -1,0 +1,142 @@
+.post {
+  margin-bottom: sizes('lg');
+  background-color: lighten($body-bg, 4%);
+
+  h2 {
+    font-weight: $font-weight-bold;
+  }
+
+  .thumbnail {
+    display: flex;
+
+    div {
+      @include margin('auto')
+    }
+
+    img {
+      @extend %img-responsive;
+    }
+  }
+  
+  .post_info-container {
+    .category-container {
+      @extend %flex-row;
+      justify-content: end;
+    }
+
+    .author-container {
+      @extend %flex-row;
+      align-items: center;
+
+      .author-avatar {
+        display: flex;
+        
+        img {
+          @extend %img-responsive;
+        }
+      }
+
+      .author-info {
+        h3 {
+          font-weight: $font-weight-bold;
+        }
+      }
+    }
+  }
+}
+
+.post-container {
+  display: flex;
+
+  .post {
+    @include margin('md', 'auto');
+    @include padding('lg', 'xl');
+    border-radius: $border-radius-md;
+    box-shadow: $box-shadow-all;
+    max-width: sizes('vxxl');
+  }
+}
+
+.post {
+  &-header {
+    @extend %flex-col;
+
+    h2 {
+      @include padding('na', 'na', 'md');
+      @include font-size('xxl');
+      text-align: center
+    }
+  }
+
+  &-thumbnail {
+    display: flex;
+
+    img {
+      @include margin('auto');
+      min-width: sizes('vxl');
+    }
+  }
+
+  &-body {
+    @extend %flex-col;
+    @include padding('md', 'na');
+
+    p {
+      @include font-size('lg');
+      text-align: center;
+    }
+  }
+
+  &-footer {
+    border-top: standard-color('gray') $border;
+    display: flex;
+    flex-wrap: wrap;
+    
+    a {
+      @include margin('sm');
+      flex: 1 0 auto;
+    }
+  }
+}
+
+.post-container .post .post_info-container {
+  .category-container {
+    @include padding('na', 'md');
+  }
+}
+
+.post-header .post_info-container .author-container {
+  @include padding('na', 'na', 'sm');
+  align-items: normal;
+
+  .author-avatar {
+    height: sizes('xl');
+    width: sizes('xl');
+    
+    img {
+      border-radius: $border-radius-sm;
+    }
+
+    svg {
+      height: sizes('xl');
+      width: sizes('xl');
+    }
+  }
+  
+  .author-info {
+    @extend %flex-row;
+    @include padding('na', 'md');
+    border-bottom: standard-color('gray') $border;
+    height: fit-content;
+    justify-content: space-between;
+    width: 100%;
+
+    h3 {
+      @include font-size('lg');
+    }
+  
+    p {
+      @include font-size('md');
+    }
+  }
+}

@@ -1,0 +1,41 @@
+.dropdown {
+  position: relative;
+
+  .flex-col {
+    @extend %flex-col;
+  }
+
+  .flex-col li {
+    @include padding('sm', 'na');
+  }
+
+  ul {
+    @include padding('md');
+    @include standard-color-bg('white');
+    @include standard-color('black');
+    @include z-index('tooltip');
+    border-radius: $border-radius-md;
+    box-shadow: $box-shadow-all;
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    transform: translateX(-50%);
+    transition: $transition;
+    visibility: hidden;
+
+    li:hover {
+      @include standard-color-bg('gray');
+    }
+    
+    a {
+      @include font-size('sm');
+      font-weight: $font-weight-regular;
+    }
+  }
+
+  &:hover ul {
+    opacity: 1;
+    visibility: visible;
+  }
+}

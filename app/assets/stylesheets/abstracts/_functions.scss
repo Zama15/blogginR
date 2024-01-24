@@ -1,0 +1,27 @@
+@function sizes($key) {
+  @return map-get($sizes-map, $key);
+}
+
+@function sum-sizes($keys...) {
+  $sum: 0;
+  @each $key in $keys {
+    $sum: $sum + map-get($sizes-map, $key);
+  }
+  @return $sum;
+}
+
+@function z-index($key) {
+  @return map-get($z-index-map, $key);
+}
+
+@function font-size($key) {
+  @return map-get($font-size-map, $key);
+}
+
+@function standard-color($key) {
+  @return map-get($standard-color-map, $key);
+}
+
+@function alerts($key) {
+  @return map-get($alerts-map, $key);
+}

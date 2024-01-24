@@ -1,0 +1,74 @@
+header {
+  @extend %flex-row;
+  @include standard-color-bg('white');
+  @include z-index('nav');
+  box-shadow: $box-shadow-bottom;
+  height: 72px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  & > div:first-child {
+    @include margin('md', 'auto', 'md', 'xxl');
+
+    a{
+      @include font-size('xl');
+    }
+  }
+  
+  & > div:last-child {
+    @extend %flex-row;
+    @include margin('na', 'lg');
+    align-items: center;
+  }
+}
+
+header > div:first-child a {
+  @include font-size('xl');
+}
+
+header > div:last-child {
+  ul {
+    @extend %flex-row;
+  }
+
+  .logged {
+    @extend %pointer;
+  }
+}
+
+header > div:last-child ul {
+  li {
+    @include padding('na', 'md');
+  
+    a {
+      @include font-size('md');
+    }
+  }
+}
+
+header > div:last-child .logged {
+  a {
+    @include padding('na', 'md');
+  }
+  
+  div{
+    @include padding('na', 'lg');
+    display: flex;
+    height: 40px;
+    width: 40px;
+  }
+}
+
+header > div:last-child .logged div {
+  img {
+    @extend %img-responsive;
+    border-radius: $border-radius-circle;
+  }
+  
+  svg {
+    height: 40px;
+    width: 40px;
+  }
+}
+    

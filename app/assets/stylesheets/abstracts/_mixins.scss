@@ -1,0 +1,75 @@
+@mixin mobile {
+  @media only screen and (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin desktop-lg {
+  @media only screen and (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin desktop-xl {
+  @media only screen and (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+@mixin padding($values...) {
+  @if length($values) == 1 {
+    padding: sizes(nth($values, 1));
+  } @else if length($values) == 2 {
+    padding: sizes(nth($values, 1)) sizes(nth($values, 2));
+  } @else if length($values) == 3 {
+    padding: sizes(nth($values, 1)) sizes(nth($values, 2)) sizes(nth($values, 3));
+  } @else if length($values) == 4 {
+    padding: sizes(nth($values, 1)) sizes(nth($values, 2)) sizes(nth($values, 3)) sizes(nth($values, 4));
+  }
+}
+
+@mixin margin($values...) {
+  @if length($values) == 1 {
+    margin: sizes(nth($values, 1));
+  } @else if length($values) == 2 {
+    margin: sizes(nth($values, 1)) sizes(nth($values, 2));
+  } @else if length($values) == 3 {
+    margin: sizes(nth($values, 1)) sizes(nth($values, 2)) sizes(nth($values, 3));
+  } @else if length($values) == 4 {
+    margin: sizes(nth($values, 1)) sizes(nth($values, 2)) sizes(nth($values, 3)) sizes(nth($values, 4));
+  }
+}
+
+@mixin z-index($key) {
+  z-index: z-index($key);
+}
+
+@mixin standard-color($key) {
+  color: standard-color($key);
+}
+
+@mixin standard-color-bg($key) {
+  background-color: standard-color($key);
+}
+
+@mixin font-size($key) {
+  font-size: font-size($key);
+}
+
+@mixin alerts($key) {
+  color: alerts($key) !important;
+}
+
+@mixin alerts-bg($key) {
+  background-color: alerts($key) !important;
+}
+
+@mixin border($size, $color) {
+  border: $size solid standard-color($color);
+}

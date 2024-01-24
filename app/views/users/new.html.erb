@@ -1,0 +1,58 @@
+<div class="modal-container">
+  <div class="modal modal-lg">
+    <div class="modal-title">
+      <h2>Log Up</h2>
+    </div>
+    <div class="modal-body">
+      <% if flash[:error] %>
+        <div class="alert-container danger-bg">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <div class="log-container">
+        <%= form_for(@user, html: { class: 'log-form' }) do |f| %>
+          <div class="log-form-input">
+            <%= f.text_field :firstname, placeholder: 'First Name' %>
+            <span></span>
+          </div>
+          <div class="log-form-input">
+            <%= f.text_field :lastname, placeholder: 'Last Name' %>
+            <span></span>
+          </div>
+          <div class="log-form-input">
+            <%= f.text_field :username, placeholder: 'Username', required: true %>
+            <span></span>
+          </div>
+          <div class="log-form-input">
+            <%= f.email_field :email, placeholder: 'Email', required: true %>
+            <span></span>
+          </div>
+          <div class="log-form-input">
+            <%= f.password_field :password, placeholder: 'Password', required: true %>
+            <span></span>
+          </div>
+          <div class="log-form-input">
+            <%= f.password_field :password_confirmation, placeholder: 'Confirm Password', required: true %>
+            <span></span>
+          </div>
+          <%= f.submit 'Log Up', class: 'btn btn-submit' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# f.text_field :attribute -          Creates a text input field for the specified attribute. %>
+<%# f.password_field :attribute -      Creates a password input field that hides the input. %>
+<%# f.text_area :attribute -           Creates a text area (multi-line input field) for the specified attribute. %>
+<%# f.number_field :attribute -        Creates a number input field for the specified attribute. %>
+<%# f.email_field :attribute -         Creates an email input field that validates the input to be in the format of an email address. %>
+<%# f.date_field :attribute -          Creates a date input field with a date picker. %>
+<%# f.time_field :attribute -          Creates a time input field with a time picker. %>
+<%# f.datetime_field :attribute -      Creates a datetime input field with a date and time picker. %>
+<%# f.check_box :attribute -           Creates a checkbox for the specified attribute. %>
+<%# f.radio_button :attribute, value - Creates a radio button that represents the specified value for the attribute. %>
+<%# f.select :attribute, choices -     Creates a dropdown select box with the given choices. %>
+<%# f.file_field :attribute -          Creates a file upload field. %>
+<%# f.hidden_field :attribute -        Creates a hidden field for the specified attribute. %>
+<%# f.submit "Button Label" -          Creates a submit button for the form. %>

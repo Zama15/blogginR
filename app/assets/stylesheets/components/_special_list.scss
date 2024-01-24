@@ -1,0 +1,26 @@
+.arrow-selector {
+  @include padding('sm');
+
+  li {
+    @extend %pointer;
+    @include font-size('md');
+    @include padding('xs', 'sm');
+  }
+}
+
+.arrow-selector li {
+  a {
+    font-weight: $font-weight-light;
+  }
+  
+  &:hover {
+    &::before, a {
+      font-weight: $font-weight-bold;
+    }
+  
+    &::before {
+      content: '\eb67';
+      font-family: $font-family-icons;
+    }
+  }
+}

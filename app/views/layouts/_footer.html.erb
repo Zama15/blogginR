@@ -1,0 +1,46 @@
+<footer>
+  <div>
+    <h2><%= link_to 'unforgettable', root_path %></h2>
+    <ul>
+      <li>
+        <a href="https://github.com/CitlalyEstefania/Proyecto-Integrador-Segundo-Semestre/tree/main" target="_blank"><i class="uil uil-github"></i></a>
+      </li>
+      <li>
+        <a href=""><i class="uil uil-facebook-f"></i></a>
+      </li>
+      <li>
+        <a href=""><i class="uil uil-youtube"></i></a>
+      </li>
+      <li>
+        <a href=""><i class="uil uil-twitter"></i></a>
+      </li>
+      <li>
+        <a href=""><i class="uil uil-discord"></i></a>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <div>
+      <h3>Trend</h3>
+      <ul class="arrow-selector">
+        <% @categories_trend.each do |category|  %>
+          <%# <li><a href=""><%= category.category.title </a></li>  %>
+          <li>
+            <%= link_to category_posts_path(category.category.id) do %> 
+              <%=category.category.title%> 
+            <% end %> 
+          </li> 
+        <% end %> 
+      </ul>
+    </div>
+    <div>
+      <h3>Extras</h3>
+      <ul class="arrow-selector">
+        <li><a href="views/index.php">Blog</a></li>
+        <li><a href="views/extras/about.php">About us</a></li>
+        <li><a href="views/extras/services.php">Services</a></li>
+        <li><a href="views/extras/contact.php">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

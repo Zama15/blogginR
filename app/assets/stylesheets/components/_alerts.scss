@@ -1,0 +1,96 @@
+.alert-container {
+  @extend %pointer;
+  @include font-size('md');
+  @include padding('md');
+  border-radius: $border-radius-md;
+  box-shadow: $box-shadow-all;
+  text-align: center;
+  color: standard-color('white');
+  font-style: italic;
+}
+
+.success {
+  @include alerts('success');
+}
+
+.success-bg {
+  @include alerts-bg('success');
+  $transition: $transition-slow;
+}
+
+.info {
+  @include alerts('info');
+}
+
+.info-bg {
+  @include alerts-bg('info');
+  $transition: $transition-slow;
+}
+
+.warning {
+  @include alerts('warning');
+}
+
+.warning-bg {
+  @include alerts-bg('warning');
+  $transition: $transition-slow;
+}
+
+.danger {
+  @include alerts('danger');
+}
+
+.danger-bg {
+  @include alerts-bg('danger');
+  $transition: $transition-slow;
+}
+
+.hover {
+  &-success {
+    $transition: $transition-slow;
+    
+    &:hover {
+      @include alerts('success');
+    }
+
+    &-bg:hover {
+      @include alerts-bg('success');
+    }
+  }
+
+  &-info {
+    $transition: $transition-slow;
+    
+    &:hover {
+      @include alerts('info');
+    }
+
+    &-bg:hover {
+      @include alerts-bg('info');
+    }
+  }
+
+  &-warning {
+    $transition: $transition-slow;
+
+    &:hover {
+      @include alerts('warning');
+    }
+
+    &-bg:hover {
+      @include alerts-bg('warning');
+    }
+  }
+
+  &-danger {
+    $transition: $transition-slow;
+
+    &:hover {
+      @include alerts('danger');
+    }
+
+    &-bg:hover {
+      @include alerts-bg('danger');
+    }
+  }
+}

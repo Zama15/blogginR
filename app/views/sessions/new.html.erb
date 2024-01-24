@@ -1,0 +1,33 @@
+<div class="modal-container">
+  <div class="modal">
+    <div class="modal-title">
+      <h2>Log In</h2>
+    </div>
+    <div class="modal-body">
+      <% if flash[:error] %>
+        <div class="alert-container danger-bg">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <div class="log-container">
+        <%= form_for(@user, url: login_path, html: { class: 'log-form' }) do |f| %>
+          <div class="log-form-input">
+            <%= f.text_field :username, placeholder: 'Username or Email', required: true %>
+            <span></span>
+          </div>
+          <div class="container-w-note">
+            <div class="log-form-input">
+              <%= f.password_field :password, placeholder: 'Password', required: true %>
+              <span></span>
+            </div>
+            <p><a href="">Forgot your password?</a></p>
+          </div>
+          <div class="container-w-note">
+            <%= f.submit 'Log In', class: 'btn btn-submit' %>
+            <p><%= link_to "Don't have an account? Sign Up", logup_path %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

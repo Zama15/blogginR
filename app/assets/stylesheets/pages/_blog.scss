@@ -1,0 +1,109 @@
+.search-container {
+  @extend %flex-row;
+  @include margin('lg', 'na');
+  align-items: center;
+  justify-content: center;
+}
+
+.category-title {
+  @include margin('na', 'na', 'lg');
+  @include font-size('xxl');
+  font-weight: $font-weight-bold;
+  text-align: center;
+}
+
+.posts-container {
+  @include margin('na', 'xl');
+  column-count: 3;
+  column-gap: sizes('lg');
+
+  .post {
+    @include padding('lg', 'xl');
+    break-inside: avoid;
+  }
+
+  & > h2 {
+    @include font-size('xxl');
+    font-weight: $font-weight-bold;
+    text-align: center;
+  }
+
+  & > div {
+    height: 1px;
+  }
+}
+
+.posts-container .post {
+  h2 {
+    @include font-size('lg');
+  }
+  
+  .thumbnail {
+    @include padding('md', 'na');
+    width: 384px;
+  }
+  
+  .post_info-container {
+    @include padding('na', 'sm');
+  }
+
+  & > p {
+    @include padding('na', 'sm');
+  }
+}
+
+.posts-container .post .post_info-container {
+  .category-container {
+    @include padding('na', 'md');
+  }
+  
+  .author-container {
+    @include padding('na', 'sm');
+  }
+}
+
+.posts-container .post .post_info-container .author-container {
+  .author-avatar {
+    @include padding('na', 'sm', 'na', 'na');
+    height: 32px;
+    width: 32px;
+    
+    img {
+      border-radius: $border-radius-sm;
+    }
+
+    svg {
+      height: 32px;
+      width: 32px;
+    }
+  }
+  
+  .author-info {
+    h3 {
+      @include font-size('md');
+    }
+  
+    p {
+      @include font-size('sm');
+    }
+  }
+}
+
+.categories-container {
+  @include margin('lg', 'na');
+  @include padding('lg', 'vxl');
+  background-color: darken($body-bg, 4%);
+  display: flex;
+  flex-wrap: wrap;
+  
+  a {
+    @include margin('sm');
+    flex: 1 0 auto;
+  }
+
+  h2 {
+    @include font-size('lg');
+    @include margin('auto');
+    font-weight: $font-weight-bold;
+  }
+}

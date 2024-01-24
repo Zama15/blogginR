@@ -1,0 +1,88 @@
+$font-family-base: ('Rubik', sans-serif);
+$font-size-base: 16px;
+$line-height-base: 1.5;
+
+$font-family-icons: 'unicons-line', sans-serif;
+
+$breakpoint-xl: 1440px;
+$breakpoint-lg: 1024px;
+$breakpoint-md: 768px;
+$breakpoint-sm: 480px;
+
+$body-bg: hsl(0, 18%, 93%);
+$text-color: hsl(0, 0%, 20%);
+$shadow: rgba(0, 0, 0, 0.1);
+$border: 2px solid;
+
+$transition: all 300ms ease;
+$transition-fast: all 100ms ease;
+$transition-slow: all 500ms ease;
+
+$box-shadow: 10px $shadow;
+$box-shadow-all: 0 0 $box-shadow;
+$box-shadow-top: 0 -5px $box-shadow;
+$box-shadow-bottom: 0 5px $box-shadow;
+$box-shadow-left: -5px 0 $box-shadow;
+$box-shadow-right: 5px 0 $box-shadow;
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$border-radius-none: 0;
+$border-radius-sm: 5px;
+$border-radius-md: 10px;
+$border-radius-lg: 15px;
+$border-radius-xl: 25px;
+$border-radius-circle: 50%;
+
+$z-index-map: (
+  'backdrop': 700,
+  'dropdown': 400,
+  'fixed': 600,
+  'loading': 900,
+  'modal': 300,
+  'nav': 100,
+  'overlay': 200,
+  'sticky': 500,
+  'toast': 800,
+  'tooltip': 1000,
+);
+
+$standard-color-map: (
+  'transparent': transparent,
+  'white': hsl(0, 0%, 97%),
+  'black': hsl(0, 0%, 20%),
+  'gray': hsl(0, 0%, 70%),
+);
+
+$alerts-map: (
+  'success': hsl(120, 100%, 80%),
+  'info': hsl(240, 100%, 80%),
+  'warning': hsl(60, 100%, 70%),
+  'danger': hsl(0, 100%, 70%),
+);
+
+$font-size-map: (
+  'sm': 12px,
+  'md': 16px,
+  'lg': 20px,
+  'xl': 24px,
+  'xxl': 32px,
+  'xxxl': 48px,
+);
+
+$sizes-map: (
+  'na': 0,
+  'auto': auto,
+  'xs': 4px,
+  'sm': 8px,
+  'md': 16px,
+  'lg': 32px,
+  'xl': 64px,
+  'xxl': 128px,
+  'vl': 256px,
+  'vxl': 512px,
+  'vxxl': 1024px,
+);
