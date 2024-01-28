@@ -12,14 +12,14 @@ class SessionsController < ApplicationController
 
   # POST /login
   def create
-    @user = find_user_by(params[:user][:username])
+    @user = User.find_by(username: username)
 
-    if @user&.authenticate(params[:user][:password])
-      success_login
-    elsif php_authenticate?(params[:user][:password])
-      success_login
+    if valid_params?(password)
+      session[:user_id] = @user.id
+      redirect_to root_path
     else
-      display_error('Invalid user or password')
+      flash[:error] = 'Invalid user or password.'
+      redirect_to login_path
     end
   end
 
@@ -31,34 +31,28 @@ class SessionsController < ApplicationController
 
   private
 
-  def find_user_by(username)
-    user = User.find_by(username: username)
-    return user if user
-
-    user = User.find_by(email: username)
-    return user if user
-
-    nil
-  end
-
-  def php_authenticate?(password)
-    @user&.password_php && php_auth(password)
-  end
-
-  def php_auth(password)
+  def legacy_authenticate(pass_plain)
     php_file = 'app/controllers/helpers/auth_password.php'
-    output = `php #{php_file} '#{password}' '#{@user&.password_php}'`
+    output = `php #{php_file} '#{pass_plain}' '#{@user.password_php}'`
 
     output == 'true'
   end
 
-  def display_error(error)
-    flash[:error] = error
-    redirect_to login_path
+  def valid_params?(pass_plain)
+    if @user&.password_php
+      legacy_authenticate(pass_plain)
+    elsif @user&.password_digest
+      @user.authenticate(pass_plain)
+    else
+      false
+    end
   end
 
-  def success_login
-    session[:user_id] = @user.id
-    redirect_to root_path
+  def username
+    params[:user][:username]
+  end
+
+  def password
+    params[:user][:password]
   end
 end
