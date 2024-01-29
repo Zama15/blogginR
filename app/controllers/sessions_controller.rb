@@ -3,6 +3,8 @@
 # Path: app/controllers/session_controller.rb
 # This is the controller for the sessions resource.
 class SessionsController < ApplicationController
+  include Shared
+
   layout 'modal-wrapper'
 
   # GET /login/new
@@ -32,10 +34,13 @@ class SessionsController < ApplicationController
   private
 
   def legacy_authenticate(pass_plain)
-    php_file = 'app/controllers/helpers/auth_password.php'
-    output = `php #{php_file} '#{pass_plain}' '#{@user.password_php}'`
+    php_file = 'app/scripts/legacy_authenticate.php'
 
-    output == 'true'
+    if pass_plain =~ password_regex
+      system('php', php_file, pass_plain, @user.password_php)
+    else
+      false
+    end
   end
 
   def valid_params?(pass_plain)

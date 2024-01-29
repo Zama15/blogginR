@@ -3,8 +3,8 @@ $password = $argv[1];
 $hased_password = $argv[2];
 
 if (password_verify($password, $hased_password)) {
-  echo 'true';
+  exit(0);
 } else {
-  echo 'false';
+  exit(1);
 }
 ?>
