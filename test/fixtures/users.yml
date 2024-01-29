@@ -1,0 +1,6 @@
+one:
+  username: MyString
+  email: MyString@MyString.com
+  password_php: $2y$10$FYJ5PvFRPaFWWZPhFYlxEuiETZwlk5PmoehlOiR93r3.4M3gU8QVy
+  password_digest: <%= BCrypt::Password.create('MyString#123') %>
+
