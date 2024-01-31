@@ -3,10 +3,7 @@
 # Path: app/controllers/users_controller.rb
 # This is the controller for the users resource.
 class UsersController < ApplicationController
-  # # GET /users/:id
-  # def show
-  #   @user = User.find(params[:id])
-  # end
+  include Shared
 
   # GET /users/new
   def new
@@ -28,36 +25,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # # GET /users/:id/edit
-  # def edit
-  #   # This is an instance variable, which means it will be available in the view.
-  #   @user = User.find(params[:id])
-  # end
-
-  # # PATCH /users/:id
-  # def update
-  #   # This is an instance variable, which means it will be available in the view.
-  #   @user = User.find(params[:id])
-
-  #   if @user.update(user_params)
-  #     # If the user is updated successfully, redirect to the users index.
-  #     redirect_to users_path
-  #   else
-  #     # Otherwise render the edit template again with the @user instance variable.
-  #     render :edit
-  #   end
-  # end
-
-  # # DELETE /users/:id
-  # def destroy
-  #   # This is an instance variable, which means it will be available in the view.
-  #   @user = User.find(params[:id])
-  #   @user.destroy
-
-  #   # Redirect to the users index.
-  #   redirect_to users_path
-  # end
-
   private
 
   def user_params
@@ -78,13 +45,13 @@ class UsersController < ApplicationController
   end
 
   def password_valid?(user)
-    user.password.length >= 8
+    user.password =~ password_regex ? true : false
   end
 
   def valid_params(user)
     if user_exists?(user) then 'Username or email already exists'
     elsif !confirm_password?(user) then 'Password does not match'
-    elsif !password_valid?(user) then 'Password must be at least 8 characters long'
+    elsif !password_valid?(user) then 'Password is not valid'
     end
   end
 
