@@ -12,11 +12,19 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= render 'layouts/header' %>
+  <body class="<%= 'modal-wrapper' if wrap_body? %>">
+    <%= render "layouts/header" %>
+    
+    <% if flash[:error] || flash[:notice] %>
+      <div class="alert-container <%= flash[:notice]? 'success-bg' : 'danger-bg' %>">
+        <p>
+          <%= flash[:notice]? flash[:notice] : flash[:error] %>
+        </p>
+      </div>
+    <% end %>
 
     <%= yield %>
-
-    <%= render 'layouts/footer' %>
+    
+    <%= render 'layouts/footer' unless wrap_body? %>
   </body>
 </html>

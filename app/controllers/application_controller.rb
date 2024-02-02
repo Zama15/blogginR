@@ -3,8 +3,8 @@
 # Path: app/controllers/application_controller.rb
 # This is the controller for the application.
 class ApplicationController < ActionController::Base
-  before_action :categories_trend
-  before_action :set_current_user
+  before_action :categories_trend, :set_current_user
+  helper_method :wrap_body?
 
   private
 
@@ -17,5 +17,17 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     @current_user = User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def wrap_body?
+    special_controller? && special_action?
+  end
+
+  def special_controller?
+    controller_name == 'sessions' || controller_name == 'users'
+  end
+
+  def special_action?
+    action_name == 'new'
   end
 end

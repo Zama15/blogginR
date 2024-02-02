@@ -5,8 +5,6 @@
 class SessionsController < ApplicationController
   include Shared
 
-  layout 'modal-wrapper'
-
   # GET /login/new
   def new
     @user = User.new

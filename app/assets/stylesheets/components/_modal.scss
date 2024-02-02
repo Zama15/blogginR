@@ -4,6 +4,17 @@
   height: 100vh;
 }
 
+.modal-wrapper .alert-container {
+  @include font-size('md');
+  padding: sum-sizes('md', 'sm') sizes('md');
+  left: 50%;
+  position: absolute;
+  top: 10%;
+  transform: translateX(-50%);
+  width: 80%;
+
+}
+
 .modal-wrapper::after{
   background: inherit;
   bottom: 0;

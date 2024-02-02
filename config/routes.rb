@@ -24,10 +24,7 @@ Rails.application.routes.draw do
   # Defines the routes for the users resource, create:
   # get '/users/:id' => 'users#show', as: 'user'
   get '/users/new' => 'users#new', as: 'logup'
-  post '/users' => 'users#create'
-  get '/users/:id/edit' => 'users#edit', as: 'edit_user'
-  patch '/users/:id' => 'users#update'
-  delete '/users/:id' => 'users#destroy'
+  resources :users, except: %i[new]
 
   # Defines the routes for the sessions resource, create:
   get '/login' => 'sessions#new', as: 'login'
