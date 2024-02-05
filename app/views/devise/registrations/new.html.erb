@@ -1,0 +1,50 @@
+<div class="modal-container">
+  <div class="modal">
+    <div class="modal-title">
+      <h2>Sign up</h2>
+    </div>
+    <div class="modal-body">
+      <div class="form-container">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="form-input">
+            <%= f.text_field :username, autofocus: true, placeholder: "  " %>
+            <div class="cut">
+              <%= f.label :username %>
+            </div>
+          </div>
+          <div class="form-input">
+            <%= f.email_field :email, placeholder: "  " %>
+            <div class="cut">
+              <%= f.label :email %>
+            </div>
+          </div>
+          <div class="form-input">
+            <%= f.password_field :password, placeholder: "  " %>
+            <div class="cut">
+              <%= f.label :password %>
+            </div>
+            <% if @minimum_password_length %>
+              <div class="form-notes">
+                <p>(<%= @minimum_password_length %> characters minimum)</p>
+              </div>
+            <% end %>
+          </div>
+          <div class="form-input">
+            <%= f.password_field :password_confirmation, placeholder: "  " %>
+            <div class="cut">
+              <%= f.label :password_confirmation %>
+            </div>
+          </div>
+          <div class="form-submit">
+            <%= f.submit "Sign up", class: 'btn btn-submit' %>
+            <div class="form-notes">
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

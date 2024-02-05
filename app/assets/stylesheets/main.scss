@@ -10,18 +10,17 @@
 @import
   'layout/grid',
   'layout/header',
-  'layout/footer',
-  'layout/forms';
+  'layout/footer';
 
 @import
   'components/special_list',
   'components/modal',
   'components/dropdowns',
+  'components/forms',
   'components/buttons',
   'components/alerts';
 
 @import
-  'pages/log',
   'pages/blog',
   'pages/post';
 

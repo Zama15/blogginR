@@ -1,0 +1,144 @@
+.search-container form {
+  div {
+    @include padding('md');
+    @include standard-color('black');
+    background-color: lighten($body-bg, 4%);
+    border-radius: $border-radius-md;
+    border: $border standard-color('gray');
+    display: flex;
+    flex-wrap: wrap;
+    transition: $transition;
+
+    button, input, select, textarea, i {
+      flex: 1 0 auto;
+    }
+
+    button {
+      @include font-size('md');
+      @include standard-color-bg('transparent');
+      @include standard-color('black');
+      text-align: center;
+      transition: $transition;
+    }
+
+    &:focus-within {
+      background-color: darken(standard-color('white'), 20%);
+      border: $border darken(standard-color('gray'), 50%);
+
+      button, input, select, textarea, i {
+        color: darken(standard-color('black'), 20%);
+      }
+    }
+
+    &:hover {
+      border: $border darken(standard-color('gray'), 50%);
+
+      button {
+        color: darken(standard-color('black'), 50%);
+      }
+    }
+  }
+}
+
+input, select, textarea {
+  @include padding('na', 'md');
+  @include standard-color-bg('transparent');
+}
+
+.form-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container form {
+  @include padding('na', 'lg');
+
+  .btn-submit {
+    @include padding('sm', 'md');
+  }
+}
+
+.form-container .form-input {
+  @include margin('md', 'na');
+  position: relative;
+
+  input {
+    background-color: darken(standard-color('white'), 10%);
+    border-radius: $border-radius-md;
+  }
+
+  .cut {
+    @include padding('xs', 'sm');
+    background-color: standard-color('white');
+    border-radius: $border-radius-sm;
+    left: 20px;
+    position: absolute;
+    top: -32px;
+    transition: $transition;
+  }
+
+  label {
+    color: lighten($text-color, 20%);
+    left: -10px;
+    position: relative;
+    top: 46px;
+    transition: transform 200ms, color 200ms;
+  }
+
+  input:focus ~ .cut label,
+  input:not(:placeholder-shown) ~ .cut label  {
+    color: $text-color;
+    transform: translateY(-40px) translateX(10px) scale(0.85);
+  }
+
+  input:focus ~ .cut,
+  input:not(:placeholder-shown) ~ .cut {
+    transform: translateY(10px);
+  }
+}
+
+.form-container .form-checkbox {
+  @include padding('md', 'na');
+  flex-direction: row;
+
+  input {
+    @include padding('sm');
+    appearance: none;
+    border-radius: $border-radius-circle;
+    border: $border darken(standard-color('white'), 30%);
+    transition: all 0.15s linear;
+  }
+
+  input:checked {
+    box-shadow: 0px 0px 0px 20px darken(standard-color('white'), 30%) inset;
+  }
+
+  label {
+    position: absolute;
+    transform: translate(24px, -2px);
+  }
+}
+
+.form-container .form-submit {
+  @include padding('md', 'na');
+
+  &:hover button{
+    @include standard-color('white');
+  }
+
+  .form-notes {
+    @include padding('sm', 'na', 'md');
+  }
+}
+
+.form-container .form-notes {
+  @extend %flex-row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  p {
+    @include font-size('sm');
+    @include padding('na', 'sm');
+  }
+}
