@@ -24,7 +24,8 @@ class ApplicationController < ActionController::Base
   end
 
   def special_controller?
-    controller_name == 'sessions' || controller_name == 'users'
+    controller_name == 'sessions' || controller_name == 'registrations' ||
+      controller_name == 'passwords' || controller_name == 'confirmations'
   end
 
   def special_action?

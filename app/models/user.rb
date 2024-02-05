@@ -3,12 +3,13 @@
 # Path: app/controllers/users_controller.rb
 # This is the model for the users
 class User < ApplicationRecord
-  # This is a macro that tells Rails that use a bcrypt password.
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :confirmable
   # This is a macro that tells Rails that a user can have many posts.
   has_many :posts
-  # This is a macro that tells Rails that a user can have many comments.
-  # has_many :comments
   # This is a macro that tells Rails that a user can have many users_preferences.
   has_many :preferences
   # This is a macro that tells Rails that create a default preferences for a user.
