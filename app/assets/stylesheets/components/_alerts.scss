@@ -1,3 +1,11 @@
+.modal-wrapper .alert-container {
+  @include z-index('toast');
+}
+
+body > .alert-container {
+  @include margin('0', 'lg');
+}
+
 .alert-container {
   @extend %pointer;
   @include font-size('md');
@@ -5,8 +13,15 @@
   border-radius: $border-radius-md;
   box-shadow: $box-shadow-all;
   text-align: center;
-  color: standard-color('white');
   font-style: italic;
+  
+  &.success-bg, &.warning-bg {
+    color: standard-color('black');
+  }
+
+  &.danger-bg, &.info-bg {
+    color: standard-color('white');
+  }
 }
 
 .success {

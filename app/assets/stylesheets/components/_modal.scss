@@ -4,15 +4,28 @@
   height: 100vh;
 }
 
-.modal-wrapper .alert-container {
+.modal-wrapper .alert-container, .form-container .alert-container {
   @include font-size('md');
-  padding: sum-sizes('md', 'sm') sizes('md');
+  align-items: center;
+  display: flex;
   left: 50%;
+  padding: sum-sizes('md', 'sm') sizes('md');
   position: absolute;
   top: 10%;
   transform: translateX(-50%);
   width: 80%;
 
+  p {
+    font-weight: $font-weight-bold;
+  }
+  
+  ul {
+    list-style: disc;
+  }
+
+  ul li {
+    text-align: center;
+  }
 }
 
 .modal-wrapper::after{

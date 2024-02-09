@@ -10,9 +10,9 @@
         <li><a href="views/extras/contact.php">Contact</a></li>
       </ul>
       <div class="logged">
-        <% if @current_user %>
+        <% if user_signed_in? %>
             <div class="dropdown">
-              <%= avatar_nil?(@current_user.avatar, { color: @current_user.preferences }) %>
+              <%= avatar_nil?(current_user.avatar, { color: current_user.preferences }) %>
               <ul class="flex-col">
                 <li>
                   <a href="">Profile</a>
