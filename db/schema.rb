@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_04_222110) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_08_174139) do
   create_table "categories", id: { type: :integer, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "title", limit: 50, null: false
     t.text "description", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_04_222110) do
     t.datetime "created_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", precision: nil
     t.integer "post_id", unsigned: true
-    t.integer "author_id", unsigned: true
+    t.bigint "author_id"
     t.boolean "checked", default: false, null: false
     t.boolean "edited", default: false, null: false
     t.integer "reported", default: 0, null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_04_222110) do
     t.string "thumbnail", null: false
     t.datetime "created_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", precision: nil
-    t.integer "author_id", null: false, unsigned: true
+    t.bigint "author_id"
     t.boolean "checked", default: false, null: false
     t.boolean "eliminated", default: false, null: false
     t.index ["author_id"], name: "FK_blog_author"
@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_04_222110) do
   end
 
   create_table "preferences", id: { type: :integer, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.integer "user_id", null: false, unsigned: true
+    t.bigint "user_id"
     t.string "theme", null: false
     t.string "color", null: false
     t.index ["user_id"], name: "FK_preferences_user"
@@ -72,8 +72,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_04_222110) do
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "username", null: false
-    t.string "avatar"
     t.string "email", null: false
     t.string "encrypted_password", null: false
     t.string "reset_password_token"
@@ -83,16 +81,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_04_222110) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "username", limit: 50, null: false
+    t.string "avatar"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "comments", "posts", name: "FK_comment_post", on_delete: :cascade
-  add_foreign_key "comments", "user_v2", column: "author_id", name: "FK_comment_author", on_delete: :nullify
-  add_foreign_key "posts", "user_v2", column: "author_id", name: "FK_blog_author", on_delete: :cascade
+  add_foreign_key "comments", "users", column: "author_id", on_delete: :nullify
+  add_foreign_key "posts", "users", column: "author_id", on_delete: :cascade
   add_foreign_key "posts_categories", "categories", name: "FK_post_category_category", on_delete: :cascade
   add_foreign_key "posts_categories", "posts", name: "FK_post_category_post", on_delete: :cascade
-  add_foreign_key "preferences", "user_v2", column: "user_id", name: "FK_preferences_user", on_delete: :cascade
+  add_foreign_key "preferences", "users", on_delete: :cascade
 end
