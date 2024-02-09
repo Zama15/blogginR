@@ -4,7 +4,18 @@
 # This is the controller for the application.
 class ApplicationController < ActionController::Base
   before_action :categories_trend, :set_current_user
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :wrap_body?
+  protect_from_forgery with: :exception
   helper_method :wrap_body?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username])
+
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[username avatar])
+  end
 
   private
 
@@ -24,10 +35,13 @@ class ApplicationController < ActionController::Base
   end
 
   def special_controller?
-    controller_name == 'sessions' || controller_name == 'users'
+    Rails.logger.debug "Controller Name: #{controller_name}"
+    controller_name == 'sessions' || controller_name == 'registrations' ||
+      controller_name == 'passwords' || controller_name == 'confirmations'
   end
 
   def special_action?
-    action_name == 'new'
+    Rails.logger.debug "Action Name: #{action_name}"
+    action_name == 'new' || action_name == 'edit' || action_name == 'update'
   end
 end

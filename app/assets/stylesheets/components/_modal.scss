@@ -4,15 +4,28 @@
   height: 100vh;
 }
 
-.modal-wrapper .alert-container {
+.modal-wrapper .alert-container, .form-container .alert-container {
   @include font-size('md');
-  padding: sum-sizes('md', 'sm') sizes('md');
+  align-items: center;
+  display: flex;
   left: 50%;
+  padding: sum-sizes('md', 'sm') sizes('md');
   position: absolute;
   top: 10%;
   transform: translateX(-50%);
   width: 80%;
 
+  p {
+    font-weight: $font-weight-bold;
+  }
+  
+  ul {
+    list-style: disc;
+  }
+
+  ul li {
+    text-align: center;
+  }
 }
 
 .modal-wrapper::after{
@@ -35,7 +48,7 @@
   @include padding('lg', 'xl');
   @include margin('auto');
   @include z-index('modal');
-  background-color: $body-bg;
+  background-color: standard-color('white');
   border-radius: $border-radius-md;
   box-shadow: $box-shadow-all;
 
@@ -44,10 +57,11 @@
   }    
 
   .modal-title {
+    @include padding('sm', 'na', 'md');
+
     p, h1, h2, h3, h4, h5, h6 {
       @include font-size('xxl');
       @include margin('na', 'auto');
-      @include padding('sm', 'na');
       font-weight: $font-weight-bold;
     }
   }
@@ -61,28 +75,33 @@
 .modal {
   &-sm {
     max-height: 50%;
+    max-width: 50%;
     width: 45%;
   }
 
   &-md {
     max-height: 70%;
+    max-width: 65%;
     width: 60%;
   }
 
   &-lg {
     max-height: 90%;
+    max-width: 80%;
     width: 75%;
   }
 
   &-xl {
     max-height: 90%;
+    max-width: 90%;
     width: 90%;
   }
 }
 
 .modal-body {
   form, div, section, ul {
-    @extend %flex-col;
+    display: flex;
+    flex-direction: column;
 
     input, select, textarea {
       @include padding('md');

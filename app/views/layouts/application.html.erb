@@ -15,10 +15,10 @@
   <body class="<%= 'modal-wrapper' if wrap_body? %>">
     <%= render "layouts/header" %>
     
-    <% if flash[:error] || flash[:notice] %>
+    <% if flash[:alert] || flash[:notice] %>
       <div class="alert-container <%= flash[:notice]? 'success-bg' : 'danger-bg' %>">
         <p>
-          <%= flash[:notice]? flash[:notice] : flash[:error] %>
+          <%= flash[:notice]? flash[:notice] : flash[:alert] %>
         </p>
       </div>
     <% end %>

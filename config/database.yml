@@ -11,12 +11,12 @@ default: &default
 
 development:
   <<: *default
-  database: blog
+  database: blogginR
 
 test:
   <<: *default
-  database: blog_test
+  database: blogginR_test
 
 production:
   <<: *default
-  database: blog_production
+  database: blogginR_production

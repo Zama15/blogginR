@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -18,16 +19,6 @@ Rails.application.routes.draw do
   #  GET /posts/:id/edit => posts#edit   (returns an HTML form for editing a post)
   #  PATCH /posts/:id    => posts#update  (gets the params from posts#edit and call the model to update a post)
   #  DELETE /posts/:id   => posts#destroy (deletes a specific post)
-  get '/posts/category/:id' => 'posts#category', as: 'category_posts'
   resources :posts
-
-  # Defines the routes for the users resource, create:
-  # get '/users/:id' => 'users#show', as: 'user'
-  get '/users/new' => 'users#new', as: 'logup'
-  resources :users, except: %i[new]
-
-  # Defines the routes for the sessions resource, create:
-  get '/login' => 'sessions#new', as: 'login'
-  post '/login' => 'sessions#create'
-  delete '/logout' => 'sessions#destroy', as: 'logout'
+  get '/posts/category/:id' => 'posts#category', as: 'category_posts'
 end
