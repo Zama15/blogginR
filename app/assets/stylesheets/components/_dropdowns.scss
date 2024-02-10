@@ -14,8 +14,8 @@
     @include standard-color-bg('white');
     @include standard-color('black');
     @include z-index('tooltip');
-    border-radius: $border-radius-md;
-    box-shadow: $box-shadow-all;
+    border-radius: $br-md;
+    box-shadow: $bs-all $box-shadow;
     left: 50%;
     opacity: 0;
     position: absolute;

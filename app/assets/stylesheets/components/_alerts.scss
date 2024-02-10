@@ -10,8 +10,8 @@ body > .alert-container {
   @extend %pointer;
   @include font-size('md');
   @include padding('md');
-  border-radius: $border-radius-md;
-  box-shadow: $box-shadow-all;
+  border-radius: $br-md;
+  box-shadow: $bs-all $box-shadow;
   text-align: center;
   font-style: italic;
   

@@ -3,7 +3,7 @@ footer {
   @include padding('lg', 'xxl');
   @include standard-color-bg('white');
   @include z-index('nav');
-  box-shadow: $box-shadow-top;
+  box-shadow: $bs-top $box-shadow;
   position: relative;
 
   div {
@@ -39,7 +39,7 @@ footer > div:first-child ul li {
   @include margin('na', 'xs');
   @include padding('xs');
   align-items: center;
-  border-radius: $border-radius-circle;
+  border-radius: $br-circle;
   border: $border standard-color('transparent');
   display: flex;
   height: sizes('lg');

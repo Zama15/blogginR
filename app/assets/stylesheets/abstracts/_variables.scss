@@ -19,23 +19,24 @@ $transition-fast: all 100ms ease;
 $transition-slow: all 500ms ease;
 
 $box-shadow: 10px $shadow;
-$box-shadow-all: 0 0 $box-shadow;
-$box-shadow-top: 0 -5px $box-shadow;
-$box-shadow-bottom: 0 5px $box-shadow;
-$box-shadow-left: -5px 0 $box-shadow;
-$box-shadow-right: 5px 0 $box-shadow;
+$bs-all: 0 0;
+$bs-top: 0 -5px;
+$bs-bottom: 0 5px;
+$bs-left: -5px 0;
+$bs-right: 5px 0;
 
 $font-weight-light: 300;
 $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-bold: 700;
 
-$border-radius-none: 0;
-$border-radius-sm: 5px;
-$border-radius-md: 10px;
-$border-radius-lg: 15px;
-$border-radius-xl: 25px;
-$border-radius-circle: 50%;
+$br-none: 0;
+$br-sm: 5px;
+$br-md: 10px;
+$br-lg: 15px;
+$br-xl: 25px;
+$br-xxl: 30px;
+$br-circle: 50%;
 
 $z-index-map: (
   'backdrop': 700,

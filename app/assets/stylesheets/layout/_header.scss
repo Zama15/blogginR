@@ -2,7 +2,7 @@ header {
   @extend %flex-row;
   @include standard-color-bg('white');
   @include z-index('nav');
-  box-shadow: $box-shadow-bottom;
+  box-shadow: $bs-bottom $box-shadow;
   height: 72px;
   position: fixed;
   top: 0;
@@ -63,7 +63,7 @@ header > div:last-child .logged {
 header > div:last-child .logged div {
   img {
     @extend %img-responsive;
-    border-radius: $border-radius-circle;
+    border-radius: $br-circle;
   }
   
   svg {

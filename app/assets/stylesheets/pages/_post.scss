@@ -51,8 +51,8 @@
   .post {
     @include margin('md', 'auto');
     @include padding('lg', 'xl');
-    border-radius: $border-radius-md;
-    box-shadow: $box-shadow-all;
+    border-radius: $br-md;
+    box-shadow: $bs-all $box-shadow;
     max-width: sizes('vxxl');
   }
 }
@@ -114,7 +114,7 @@
     width: sizes('xl');
     
     img {
-      border-radius: $border-radius-sm;
+      border-radius: $br-sm;
     }
 
     svg {
