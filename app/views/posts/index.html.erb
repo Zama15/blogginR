@@ -6,9 +6,13 @@
     </div>
   </form>
 </div>
-<!-- <div class="add-post">
-  <a href="posts/add.php" class="btn">Add a Post!</a>
-</div> -->
+<div class="add-post-container">
+    <%= link_to new_post_path, class: 'btn' do %>
+      <div class="icon icon-fill">
+        <i class="uil uil-pen"></i>
+      </div>
+    <% end %>
+</div>
 <div class="posts-container">
   <% @posts.each do |post| %>
     <article class="post">
@@ -20,11 +24,13 @@
           <% end %>
         <% end %>
       </h2>
-      <div class="thumbnail">
-        <div>
-          <%= link_to image_tag("thumbnails/#{post.thumbnail}"), post_path(post.id) %>
+      <% if post.thumbnail.attached? %>
+        <div class="thumbnail">
+          <div>
+            <%= link_to image_tag(post.thumbnail), post_path(post.id) %>
+          </div>
         </div>
-      </div>
+      <% end %>
       <div class="post_info-container">
         <div class="category-container">
           <% post.posts_category.each do |post_category| %>

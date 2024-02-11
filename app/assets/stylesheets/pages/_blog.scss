@@ -5,6 +5,16 @@
   justify-content: center;
 }
 
+.add-post-container {
+  @extend %flex-row;
+
+  .btn {
+    @include margin('na', 'xl', 'na', 'auto');
+    @include padding('na');
+    @include standard-color-bg('transparent');
+  }
+}
+
 .category-title {
   @include margin('na', 'na', 'lg');
   @include font-size('xxl');
@@ -69,7 +79,7 @@
     width: 32px;
     
     img {
-      border-radius: $border-radius-sm;
+      border-radius: $br-sm;
     }
 
     svg {

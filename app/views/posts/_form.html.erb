@@ -1,0 +1,31 @@
+<%= form_for(@post, html: { class: 'post post-form' }) do |f| %>
+  <div class="post-header">
+    <div class="post_info-container">
+      <div class="author-container">
+        <div class="author-avatar">
+          <%= avatar_nil?(current_user.avatar, { color: current_user.preferences }) %>
+        </div>
+        <div class="author-info">
+          <h3><%= current_user.username %></h3>
+          <p><%= Time.current %></p>
+        </div>
+      </div>
+    </div>
+    <h2>
+      <%= f.text_field :title, autofocus: true, value: @post.title, placeholder: "Title here" %>
+    </h2>
+  </div>
+  <div class="post-thumbnail">
+    <%= f.label :thumbnail %>
+    <%= f.file_field :thumbnail, direct_upload: true %>
+  </div>
+  <div class="post-body">
+    <%= f.text_area :body, size: "70x5", value: @post.body, placeholder: "Write your thoughts here" %>
+  </div>
+  <div class="form-submit">
+    <%= f.submit "Post", class: 'btn btn-submit' %>
+  </div>
+  <div class="post-footer">
+    <p>CATEGORIES</p>
+  </div>
+<% end %>

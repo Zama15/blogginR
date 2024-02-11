@@ -142,3 +142,20 @@ input, select, textarea {
     @include padding('na', 'sm');
   }
 }
+
+.post-form {
+  h2 input {
+    border-bottom: $border standard-color('black');
+    text-align: center;
+  }
+
+  .post-body {
+    @include padding('na');
+    border: $border standard-color('black');
+    border-radius: $br-md;
+
+    textarea {
+      @include padding('md');
+    }
+  }
+}
