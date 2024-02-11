@@ -19,6 +19,12 @@ gem 'mysql2'
 # Use cssbundling to bundle CSS files [https://github.com/rails/cssbundling-rails]
 gem 'cssbundling-rails'
 
+# Use image_processing to transform images [https://github.com/janko/image_processing]
+gem 'image_processing'
+
+# Use Active Storage validations [https://guides.rubyonrails.org/active_storage_validations.html]
+gem 'active_storage_validations'
+
 # Use Sass to process CSS [https://github.com/rails/sass-rails]
 gem 'sass-rails'
 

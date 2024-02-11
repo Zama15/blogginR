@@ -8,6 +8,7 @@
   @include font-size('md');
   align-items: center;
   display: flex;
+  justify-content: center;
   left: 50%;
   padding: sum-sizes('md', 'sm') sizes('md');
   position: absolute;
@@ -49,8 +50,8 @@
   @include margin('auto');
   @include z-index('modal');
   background-color: standard-color('white');
-  border-radius: $border-radius-md;
-  box-shadow: $box-shadow-all;
+  border-radius: $br-md;
+  box-shadow: $bs-all $box-shadow;
 
   div {
     display: flex;

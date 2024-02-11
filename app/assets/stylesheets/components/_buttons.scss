@@ -4,7 +4,7 @@
   @include padding('sm', 'md');
   @include standard-color-bg('gray');
   @include standard-color('white');
-  border-radius: $border-radius-sm;
+  border-radius: $br-sm;
   text-align: center;
   transition: $transition;
 
@@ -15,5 +15,68 @@
   &-sm {
     @include font-size('sm');
     @include padding('sm', 'sm');
+  }
+}
+
+.btn .icon {
+  @extend %pointer;
+  background-color: standard-color('black');
+  border-radius: $br-xxl $br-xxl 0;
+  display: flex;
+  height: sum-sizes('lg', 'md', 'sm');
+  overflow: hidden;
+  position: relative;
+  width: sum-sizes('lg', 'md', 'sm');
+  border: $border standard-color('black');
+
+  &::before, &::after {
+    border-radius: $br-xxl $br-xxl 0;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: $transition;
+    width: 100%;
+  }
+
+  i {
+    @include font-size('xxl');
+    @include margin('auto');
+    @include standard-color('white');
+    position: relative;
+    transition: $transition;
+  }
+}
+
+.btn .icon.icon-fill {
+  &::before {
+    box-shadow: inset $bs-all 0 2px standard-color('black');
+    transition-duration: 0.5s;
+  }
+
+  &:hover {
+    &::before {
+      box-shadow: inset $bs-all 0 sum-sizes('lg', 'md', 'sm') standard-color('white');
+    }
+
+    i {
+      color: standard-color('black');
+    }
+  }
+}
+
+.btn .icon.icon-expand {
+  &::after {
+    box-shadow: inset $bs-all 0 2px standard-color('black');
+  }
+
+  &::before {
+    background: standard-color('black');
+    box-shadow: inset $bs-all 0 sum-sizes('lg', 'md', 'sm') $body-bg;
+  }
+
+  &:hover::before {
+    box-shadow: inset $bs-all 0 2px $body-bg;
   }
 }
