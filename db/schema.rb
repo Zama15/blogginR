@@ -10,11 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_08_174139) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_11_014628) do
+  create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", charset: "utf8mb3", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
   create_table "categories", id: { type: :integer, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "title", limit: 50, null: false
-    t.text "description", null: false
-    t.boolean "eliminated", default: false, null: false
+    t.datetime "created_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "comments", id: { type: :integer, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -22,25 +50,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_08_174139) do
     t.datetime "created_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", precision: nil
     t.integer "post_id", unsigned: true
-    t.bigint "author_id"
+    t.bigint "user_id"
     t.boolean "checked", default: false, null: false
     t.boolean "edited", default: false, null: false
     t.integer "reported", default: 0, null: false
     t.boolean "eliminated", default: false, null: false
-    t.index ["author_id"], name: "FK_comment_author"
     t.index ["post_id"], name: "FK_comment_post"
+    t.index ["user_id"], name: "FK_comment_author"
   end
 
   create_table "posts", id: { type: :integer, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.string "thumbnail", null: false
     t.datetime "created_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", precision: nil
-    t.bigint "author_id"
+    t.bigint "user_id"
     t.boolean "checked", default: false, null: false
     t.boolean "eliminated", default: false, null: false
-    t.index ["author_id"], name: "FK_blog_author"
+    t.index ["user_id"], name: "FK_blog_author"
   end
 
   create_table "posts_categories", primary_key: ["post_id", "category_id"], charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
@@ -88,9 +115,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_08_174139) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts", name: "FK_comment_post", on_delete: :cascade
-  add_foreign_key "comments", "users", column: "author_id", on_delete: :nullify
-  add_foreign_key "posts", "users", column: "author_id", on_delete: :cascade
+  add_foreign_key "comments", "users", on_delete: :nullify
+  add_foreign_key "posts", "users", on_delete: :cascade
   add_foreign_key "posts_categories", "categories", name: "FK_post_category_category", on_delete: :cascade
   add_foreign_key "posts_categories", "posts", name: "FK_post_category_post", on_delete: :cascade
   add_foreign_key "preferences", "users", on_delete: :cascade

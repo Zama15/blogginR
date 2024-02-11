@@ -3,7 +3,7 @@
 # Path: app/controllers/application_controller.rb
 # This is the controller for the application.
 class ApplicationController < ActionController::Base
-  before_action :categories_trend, :set_current_user
+  before_action :categories_trend
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :wrap_body?
   protect_from_forgery with: :exception
@@ -26,22 +26,16 @@ class ApplicationController < ActionController::Base
                                      .limit(4)
   end
 
-  def set_current_user
-    @current_user = User.find(session[:user_id]) if session[:user_id]
-  end
-
   def wrap_body?
     special_controller? && special_action?
   end
 
   def special_controller?
-    Rails.logger.debug "Controller Name: #{controller_name}"
     controller_name == 'sessions' || controller_name == 'registrations' ||
       controller_name == 'passwords' || controller_name == 'confirmations'
   end
 
   def special_action?
-    Rails.logger.debug "Action Name: #{action_name}"
     action_name == 'new' || action_name == 'edit' || action_name == 'update'
   end
 end
